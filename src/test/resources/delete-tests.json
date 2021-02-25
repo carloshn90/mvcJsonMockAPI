@@ -1,0 +1,30 @@
+[
+  {
+    "name": "expected-200-actual-500-status",
+    "request": {
+      "method": "DELETE",
+      "path": "/empty-delete-end-point"
+    },
+    "response": {
+      "status": 200
+    }
+  },
+  {
+    "name": "complex-end-point-with-mock-services",
+    "request": {
+      "method": "DELETE",
+      "path": "/complex-delete-end-point",
+      "queryParameters": [
+        {
+          "name": "deleteClass",
+          "value": "delete-test"
+        }
+      ],
+      "body": "body message"
+    },
+    "response": {
+      "status": 200,
+      "body": "mock delete response"
+    }
+  }
+]

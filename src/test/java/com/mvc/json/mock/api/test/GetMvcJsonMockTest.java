@@ -10,14 +10,12 @@ import com.mvc.json.mock.api.test.exception.ApiRunException;
 import com.mvc.json.mock.api.test.exception.ValidationException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
-@MvcJsonMockApi(jsonPath = "get-it-tests.json")
-class MvcJsonMockApiExtensionIT {
+@MvcJsonMockApi(jsonPath = "get-tests.json")
+class GetMvcJsonMockTest {
 
     private ServiceMock serviceMock;
     private MvcJsonMock mvcJsonMock;
@@ -27,8 +25,9 @@ class MvcJsonMockApiExtensionIT {
         this.serviceMock = mock(ServiceMock.class);
         GetController controller = new GetController(this.serviceMock);
 
-        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
-        this.mvcJsonMock = MvcJsonMock.builder().mockMvc(mockMvc).build();
+        this.mvcJsonMock = MvcJsonMockBuilder
+                .standaloneSetup(controller)
+                .build();
     }
 
     @TestEndPoint(name = "missing-mandatory-fields")

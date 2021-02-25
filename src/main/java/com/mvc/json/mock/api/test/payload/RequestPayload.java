@@ -26,6 +26,8 @@ public class RequestPayload implements Serializable {
 
     private final String path;
 
+    private final String body;
+
     @JsonProperty("queryParameters")
     private final Set<QueryParameterPayload> queryParameterPayloadSet;
 
