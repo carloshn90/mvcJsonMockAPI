@@ -1,0 +1,47 @@
+[
+  {
+  "name": "missing-mandatory-fields"
+  },
+  {
+    "name": "expected-400-actual-200-status",
+    "request": {
+      "method": "GET",
+      "path": "/empty-end-point"
+    },
+    "response": {
+      "status": 400
+    }
+  },
+  {
+    "name": "query-param-response-200-status",
+    "request": {
+      "method": "GET",
+      "path": "/query-parameter-end-point",
+      "queryParameters": [
+        {
+        "name": "param",
+        "value": "param-test"
+        },
+        {
+          "name": "number",
+          "value": 235
+        }
+      ]
+    },
+    "response": {
+      "status": 200,
+      "body": "query-parameter-end-point, param-test, 235"
+    }
+  },
+  {
+    "name": "end-point-with-mock-services",
+    "request": {
+      "method": "GET",
+      "path": "/service-response-mock"
+    },
+    "response": {
+      "status": 200,
+      "body": "mock service response"
+    }
+  }
+]
