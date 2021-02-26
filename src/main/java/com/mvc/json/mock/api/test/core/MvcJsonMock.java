@@ -40,6 +40,14 @@ public class MvcJsonMock {
                 .map(this::addEndPoint);
     }
 
+    public void testEndPoint() throws ApiException {
+
+        this.validateEndPoint()
+                .mapLeft(ValidationUtil::createValidationErrorMessage)
+                .flatMap(mvcJsonMock -> this.executeTest(mvcJsonMock.endPointPayload))
+                .getOrElseThrow(ErrorMessage::getApiException);
+    }
+
     public Either<Set<ErrorMessage>, MvcJsonMock> validateEndPoint() {
 
         if (this.endPointPayload == null)
@@ -50,18 +58,10 @@ public class MvcJsonMock {
         return errors.isEmpty() ? Right(this) : Left(errors);
     }
 
-    public Either<ErrorMessage, EndPointPayload> executeTest(EndPointPayload endPointPayload) {
+    private Either<ErrorMessage, EndPointPayload> executeTest(EndPointPayload endPointPayload) {
 
         return endPointPayload.getTestExecutor()
                 .execute(this.mockMvc, endPointPayload);
-    }
-
-    public void run() throws ApiException {
-
-        this.validateEndPoint()
-                .mapLeft(ValidationUtil::createValidationErrorMessage)
-                .flatMap(mvcJsonMock -> this.executeTest(mvcJsonMock.endPointPayload))
-                .getOrElseThrow(ErrorMessage::getApiException);
     }
 
     private Either<ErrorMessage, EndPointPayload> getEndPointByName(Set<EndPointPayload> endPointPayloadSet, String endPointName) {

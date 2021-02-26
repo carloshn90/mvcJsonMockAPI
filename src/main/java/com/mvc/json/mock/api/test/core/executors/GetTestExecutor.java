@@ -7,12 +7,10 @@ import com.mvc.json.mock.api.test.payload.ResponsePayload;
 import io.vavr.control.Either;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 
 import static io.vavr.API.Right;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 public class GetTestExecutor implements TestExecutor {
 
@@ -22,7 +20,7 @@ public class GetTestExecutor implements TestExecutor {
         ResponsePayload response = endPointPayload.getResponse();
 
         try {
-            checkResponse(mockMvc.perform(createGet(request)), response);
+            TestExecutor.checkResponse(mockMvc.perform(createGet(request)), response);
         } catch (Throwable e) {
             return ErrorMessage.createLeft(e);
         }
@@ -41,14 +39,5 @@ public class GetTestExecutor implements TestExecutor {
         return req;
     }
 
-    private void checkResponse(ResultActions resultActions, ResponsePayload response) throws Exception {
 
-        if (response.getBody() != null && !response.getBody().isBlank()) {
-            resultActions.andExpect(content().string(response.getBody()));
-        } else {
-            resultActions.andExpect(jsonPath("$").doesNotExist());
-        }
-
-        resultActions.andExpect(status().is(response.getStatus()));
-    }
 }

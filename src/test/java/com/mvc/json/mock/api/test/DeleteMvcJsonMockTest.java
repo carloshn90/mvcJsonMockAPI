@@ -3,12 +3,10 @@ package com.mvc.json.mock.api.test;
 import com.mvc.json.mock.api.test.annotation.MvcJsonMockApi;
 import com.mvc.json.mock.api.test.annotation.TestEndPoint;
 import com.mvc.json.mock.api.test.controller.DeleteController;
-import com.mvc.json.mock.api.test.controller.GetController;
 import com.mvc.json.mock.api.test.controller.ServiceMock;
 import com.mvc.json.mock.api.test.core.MvcJsonMock;
 import com.mvc.json.mock.api.test.exception.ApiException;
 import com.mvc.json.mock.api.test.exception.ApiRunException;
-import com.mvc.json.mock.api.test.exception.ValidationException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -34,7 +32,7 @@ class DeleteMvcJsonMockTest {
     @TestEndPoint(name = "expected-200-actual-500-status")
     void expected200Actual500StatusDelete_ResponseStatusError() {
         ApiRunException exception = Assertions.assertThrows(ApiRunException.class,
-                () -> this.mvcJsonMock.run()
+                () -> this.mvcJsonMock.testEndPoint()
         );
 
         assertTrue(exception.getMessage().contains("Response status expected:<200> but was:<500>"));
@@ -48,7 +46,7 @@ class DeleteMvcJsonMockTest {
 
         when(this.serviceMock.deleteResponse(paramValue, bodyValue)).thenReturn("mock delete response");
 
-        this.mvcJsonMock.run();
+        this.mvcJsonMock.testEndPoint();
 
         verify(this.serviceMock, timeout(1)).deleteResponse(paramValue, bodyValue);
     }
