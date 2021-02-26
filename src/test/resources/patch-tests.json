@@ -1,0 +1,30 @@
+[
+  {
+    "name": "expected-200-actual-500-status",
+    "request": {
+      "method": "PATCH",
+      "path": "/empty-patch-end-point"
+    },
+    "response": {
+      "status": 200
+    }
+  },
+  {
+    "name": "complex-end-point-with-mock-services",
+    "request": {
+      "method": "PATCH",
+      "path": "/complex-patch-end-point",
+      "queryParameters": [
+        {
+          "name": "patchClass",
+          "value": "patch-test"
+        }
+      ],
+      "body": "body message"
+    },
+    "response": {
+      "status": 200,
+      "body": "mock patch response"
+    }
+  }
+]
