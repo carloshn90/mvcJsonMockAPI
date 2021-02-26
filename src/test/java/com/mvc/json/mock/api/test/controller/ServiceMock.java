@@ -5,4 +5,6 @@ public interface ServiceMock {
     String getResponse();
 
     String deleteResponse(String deleteClass, String body);
+
+    String putResponse(String putClass, String body);
 }

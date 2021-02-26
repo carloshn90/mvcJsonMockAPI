@@ -1,0 +1,30 @@
+[
+  {
+    "name": "expected-200-actual-500-status",
+    "request": {
+      "method": "PUT",
+      "path": "/empty-put-end-point"
+    },
+    "response": {
+      "status": 200
+    }
+  },
+  {
+    "name": "complex-end-point-with-mock-services",
+    "request": {
+      "method": "PUT",
+      "path": "/complex-put-end-point",
+      "queryParameters": [
+        {
+          "name": "putClass",
+          "value": "put-test"
+        }
+      ],
+      "body": "body message"
+    },
+    "response": {
+      "status": 200,
+      "body": "mock put response"
+    }
+  }
+]
