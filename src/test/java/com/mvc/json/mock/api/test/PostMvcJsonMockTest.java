@@ -3,6 +3,7 @@ package com.mvc.json.mock.api.test;
 import com.mvc.json.mock.api.test.annotation.MvcJsonMockApi;
 import com.mvc.json.mock.api.test.annotation.TestEndPoint;
 import com.mvc.json.mock.api.test.controller.PatchController;
+import com.mvc.json.mock.api.test.controller.PostController;
 import com.mvc.json.mock.api.test.controller.ServiceMock;
 import com.mvc.json.mock.api.test.core.MvcJsonMock;
 import com.mvc.json.mock.api.test.exception.ApiException;
@@ -13,8 +14,8 @@ import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
-@MvcJsonMockApi(jsonPath = "patch-tests.json")
-class PatchMvcJsonMockTest {
+@MvcJsonMockApi(jsonPath = "post-tests.json")
+class PostMvcJsonMockTest {
 
     private ServiceMock serviceMock;
     private MvcJsonMock mvcJsonMock;
@@ -22,7 +23,7 @@ class PatchMvcJsonMockTest {
     @BeforeEach
     void setUp() {
         this.serviceMock = mock(ServiceMock.class);
-        PatchController controller = new PatchController(this.serviceMock);
+        PostController controller = new PostController(this.serviceMock);
 
         this.mvcJsonMock = MvcJsonMockBuilder
                 .standaloneSetup(controller)
@@ -30,7 +31,7 @@ class PatchMvcJsonMockTest {
     }
 
     @TestEndPoint(name = "expected-200-actual-500-status")
-    void expected200Actual500StatusPatch_ResponseStatusError() {
+    void expected200Actual500StatusPost_ResponseStatusError() {
         ApiRunException exception = Assertions.assertThrows(ApiRunException.class,
                 () -> this.mvcJsonMock.testEndPoint()
         );
@@ -41,13 +42,13 @@ class PatchMvcJsonMockTest {
     @TestEndPoint(name = "complex-end-point-with-mock-services")
     void endPointWithMockService_ResponseOkStatusWithBody() throws ApiException {
 
-        String paramValue = "patch-test";
+        String paramValue = "post-test";
         String bodyValue = "body message";
 
-        when(this.serviceMock.patchResponse(paramValue, bodyValue)).thenReturn("mock patch response");
+        when(this.serviceMock.postResponse(paramValue, bodyValue)).thenReturn("mock post response");
 
         this.mvcJsonMock.testEndPoint();
 
-        verify(this.serviceMock, timeout(1)).patchResponse(paramValue, bodyValue);
+        verify(this.serviceMock, timeout(1)).postResponse(paramValue, bodyValue);
     }
 }

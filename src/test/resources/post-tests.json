@@ -1,0 +1,30 @@
+[
+  {
+    "name": "expected-200-actual-500-status",
+    "request": {
+      "method": "POST",
+      "path": "/empty-post-end-point"
+    },
+    "response": {
+      "status": 200
+    }
+  },
+  {
+    "name": "complex-end-point-with-mock-services",
+    "request": {
+      "method": "POST",
+      "path": "/complex-post-end-point",
+      "queryParameters": [
+        {
+          "name": "postClass",
+          "value": "post-test"
+        }
+      ],
+      "body": "body message"
+    },
+    "response": {
+      "status": 200,
+      "body": "mock post response"
+    }
+  }
+]

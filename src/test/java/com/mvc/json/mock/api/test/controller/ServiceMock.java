@@ -9,4 +9,6 @@ public interface ServiceMock {
     String putResponse(String putClass, String body);
 
     String patchResponse(String patchClass, String body);
+
+    String postResponse(String postClass, String body);
 }
