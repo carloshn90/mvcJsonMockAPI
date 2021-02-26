@@ -12,9 +12,27 @@
 
 	<groupId>com.mvc.json.mock.api.test</groupId>
 	<artifactId>mvcJsonMockAPI</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>mvcJsonMockAPI</name>
 	<description>Easy test library to create endpoints test using json</description>
+	<url>https://github.com/carloshn90/mvcJsonMockAPI</url>
+
+	<developers>
+		<developer>
+			<name>Carlos Hernandez</name>
+		</developer>
+	</developers>
+
+	<licenses>
+		<license>
+			<name>MIT License</name>
+			<url>http://www.opensource.org/licenses/mit-license.php</url>
+		</license>
+	</licenses>
+
+	<scm>
+		<url>https://github.com/carloshn90/mvcJsonMockAPI/main</url>
+	</scm>
 
 	<properties>
 		<java.version>11</java.version>
