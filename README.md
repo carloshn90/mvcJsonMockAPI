@@ -42,6 +42,5 @@ To help MvcJsonMockAPI development you are encouraged to
 * pull requests for new features
 * Star :star2: the project
 
-[![View My profile on LinkedIn](https://cdn.business2community.com/wp-content/uploads/2016/02/View-my-LinkedIn-profile-image-3-300x140.png.png =160x33)](https://www.linkedin.com/in/carlos-hernandez-navarro/)
-	
+<a href="https://www.linkedin.com/in/carlos-hernandez-navarro/"><img width="120" heigh="16" alt="View My profile on LinkedIn" src="https://cdn.business2community.com/wp-content/uploads/2016/02/View-my-LinkedIn-profile-image-3-300x140.png.png"></a>
 	
