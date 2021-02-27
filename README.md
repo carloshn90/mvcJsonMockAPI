@@ -14,6 +14,32 @@ Refer [wiki](https://github.com/carloshn90/mvcJsonMockAPI/wiki/Documentation) fo
 | ------------- | ------------- | ------------|
 |   |  |  |
 
+
+## Documentation
+
+Get started with MvcJsonMockAPI, below you can see an example:
+
+```java
+@MvcJsonMockApi(jsonPath = "controller-test.json")
+class ControllerTest {
+
+    private MvcJsonMock mvcJsonMock;
+
+    @BeforeEach
+    void setUp() {
+        Controller controller = new Controller();
+        this.mvcJsonMock = MvcJsonMockBuilder.standaloneSetup(controller).build();
+    }
+
+    @TestEndPoint(name = "elements-not-found-empty-body")
+    void getElements_ElementsNotFound_EmptyBody() throws ApiException {
+        this.mvcJsonMock.callEndPoint();
+    }
+}
+```
+
+For more information go to the [documentation](https://github.com/carloshn90/mvcJsonMockAPI/wiki/Documentation).
+
 ## License
 
 MvcJsonMockAPI is licensed under **MIT License**.
