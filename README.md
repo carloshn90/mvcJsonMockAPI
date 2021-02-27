@@ -7,7 +7,7 @@
 
 MvcJsonMockAPI simplifies the way we can create a rest-api test.
 
-Refer [wiki](https://github.com/carloshn90/mvcJsonMockAPI/wiki) for more Details.
+Refer [wiki](https://github.com/carloshn90/mvcJsonMockAPI/wiki/Documentation) for more Details.
 
 
 | Stable Release Version | JDK Version compatibility | Release Date |
