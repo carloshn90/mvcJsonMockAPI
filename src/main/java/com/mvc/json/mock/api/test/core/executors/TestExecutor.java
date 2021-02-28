@@ -14,12 +14,12 @@ public interface TestExecutor {
 
     static void checkResponse(ResultActions resultActions, ResponsePayload response) throws Exception {
 
+        resultActions.andExpect(status().is(response.getStatus()));
+
         if (response.getBody() != null && !response.getBody().isBlank()) {
             resultActions.andExpect(content().string(response.getBody()));
         } else {
             resultActions.andExpect(jsonPath("$").doesNotExist());
         }
-
-        resultActions.andExpect(status().is(response.getStatus()));
     }
 }
