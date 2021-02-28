@@ -40,6 +40,8 @@ class ControllerTest {
 
 For more information go to the [documentation](https://github.com/carloshn90/mvcJsonMockAPI/wiki/Documentation).
 
+Here you can see an example project [WebMvcJsonExample](https://github.com/carloshn90/WebMvcJsonExample/blob/main/src/test/java/com/example/mvc/json/api/examplemvcjsonapi/controller/UserControllerTest.java)
+
 ## License
 
 MvcJsonMockAPI is licensed under **MIT License**.
