@@ -11,9 +11,10 @@
 	</parent>
 
 	<groupId>com.mvc.json.mock.api.test</groupId>
-	<artifactId>mvcJsonMockAPI</artifactId>
+	<artifactId>mvc-json-mock-api</artifactId>
+	<name>mvc-json-mock-api</name>
 	<version>0.0.1</version>
-	<name>mvcJsonMockAPI</name>
+	<packaging>jar</packaging>
 	<description>Easy test library to create endpoints test using json</description>
 	<url>https://github.com/carloshn90/mvcJsonMockAPI</url>
 
