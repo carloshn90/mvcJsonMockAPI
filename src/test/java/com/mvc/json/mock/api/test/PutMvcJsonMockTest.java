@@ -2,7 +2,6 @@ package com.mvc.json.mock.api.test;
 
 import com.mvc.json.mock.api.test.annotation.MvcJsonMockApi;
 import com.mvc.json.mock.api.test.annotation.TestEndPoint;
-import com.mvc.json.mock.api.test.controller.DeleteController;
 import com.mvc.json.mock.api.test.controller.PutController;
 import com.mvc.json.mock.api.test.controller.ServiceMock;
 import com.mvc.json.mock.api.test.core.MvcJsonMock;
@@ -33,7 +32,7 @@ class PutMvcJsonMockTest {
     @TestEndPoint(name = "expected-200-actual-500-status")
     void expected200Actual500StatusPut_ResponseStatusError() {
         ApiRunException exception = Assertions.assertThrows(ApiRunException.class,
-                () -> this.mvcJsonMock.testEndPoint()
+                () -> this.mvcJsonMock.callEndPoint()
         );
 
         assertTrue(exception.getMessage().contains("Response status expected:<200> but was:<500>"));
@@ -47,7 +46,7 @@ class PutMvcJsonMockTest {
 
         when(this.serviceMock.putResponse(paramValue, bodyValue)).thenReturn("mock put response");
 
-        this.mvcJsonMock.testEndPoint();
+        this.mvcJsonMock.callEndPoint();
 
         verify(this.serviceMock, timeout(1)).putResponse(paramValue, bodyValue);
     }

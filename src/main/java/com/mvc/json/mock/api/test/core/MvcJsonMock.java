@@ -40,7 +40,7 @@ public class MvcJsonMock {
                 .map(this::addEndPoint);
     }
 
-    public void testEndPoint() throws ApiException {
+    public void callEndPoint() throws ApiException {
 
         this.validateEndPoint()
                 .mapLeft(ValidationUtil::createValidationErrorMessage)

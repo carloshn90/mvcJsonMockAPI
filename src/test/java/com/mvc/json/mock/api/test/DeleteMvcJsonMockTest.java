@@ -32,7 +32,7 @@ class DeleteMvcJsonMockTest {
     @TestEndPoint(name = "expected-200-actual-500-status")
     void expected200Actual500StatusDelete_ResponseStatusError() {
         ApiRunException exception = Assertions.assertThrows(ApiRunException.class,
-                () -> this.mvcJsonMock.testEndPoint()
+                () -> this.mvcJsonMock.callEndPoint()
         );
 
         assertTrue(exception.getMessage().contains("Response status expected:<200> but was:<500>"));
@@ -46,7 +46,7 @@ class DeleteMvcJsonMockTest {
 
         when(this.serviceMock.deleteResponse(paramValue, bodyValue)).thenReturn("mock delete response");
 
-        this.mvcJsonMock.testEndPoint();
+        this.mvcJsonMock.callEndPoint();
 
         verify(this.serviceMock, timeout(1)).deleteResponse(paramValue, bodyValue);
     }

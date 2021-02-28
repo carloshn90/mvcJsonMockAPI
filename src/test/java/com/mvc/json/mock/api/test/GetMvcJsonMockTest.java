@@ -33,7 +33,7 @@ class GetMvcJsonMockTest {
     @TestEndPoint(name = "missing-mandatory-fields")
     void missingMandatoryFieldsJson_ValidationError() {
         ValidationException validationException = Assertions.assertThrows(ValidationException.class,
-                () -> this.mvcJsonMock.testEndPoint()
+                () -> this.mvcJsonMock.callEndPoint()
         );
 
         assertTrue(validationException.getMessage().contains("End-Point json validation errors: \n"));
@@ -44,7 +44,7 @@ class GetMvcJsonMockTest {
     @TestEndPoint(name = "expected-400-actual-200-status")
     void expected400Actual200Status_ResponseStatusError() {
         ApiRunException exception = Assertions.assertThrows(ApiRunException.class,
-                () -> this.mvcJsonMock.testEndPoint()
+                () -> this.mvcJsonMock.callEndPoint()
         );
 
         assertTrue(exception.getMessage().contains("Response status expected:<400> but was:<200>"));
@@ -52,7 +52,7 @@ class GetMvcJsonMockTest {
 
     @TestEndPoint(name = "query-param-response-200-status")
     void queryParamGetRequest_ResponseOkStatusWithBody() throws ApiException {
-        this.mvcJsonMock.testEndPoint();
+        this.mvcJsonMock.callEndPoint();
     }
 
     @TestEndPoint(name = "end-point-with-mock-services")
@@ -60,7 +60,7 @@ class GetMvcJsonMockTest {
 
         when(this.serviceMock.getResponse()).thenReturn("mock service response");
 
-        this.mvcJsonMock.testEndPoint();
+        this.mvcJsonMock.callEndPoint();
 
         verify(this.serviceMock, timeout(1)).getResponse();
     }

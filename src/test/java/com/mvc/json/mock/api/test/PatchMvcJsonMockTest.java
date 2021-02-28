@@ -32,7 +32,7 @@ class PatchMvcJsonMockTest {
     @TestEndPoint(name = "expected-200-actual-500-status")
     void expected200Actual500StatusPatch_ResponseStatusError() {
         ApiRunException exception = Assertions.assertThrows(ApiRunException.class,
-                () -> this.mvcJsonMock.testEndPoint()
+                () -> this.mvcJsonMock.callEndPoint()
         );
 
         assertTrue(exception.getMessage().contains("Response status expected:<200> but was:<500>"));
@@ -46,7 +46,7 @@ class PatchMvcJsonMockTest {
 
         when(this.serviceMock.patchResponse(paramValue, bodyValue)).thenReturn("mock patch response");
 
-        this.mvcJsonMock.testEndPoint();
+        this.mvcJsonMock.callEndPoint();
 
         verify(this.serviceMock, timeout(1)).patchResponse(paramValue, bodyValue);
     }
